@@ -1,5 +1,5 @@
---- a/io-ctrl/Makefile	2019-03-27 11:50:27.879234978 +0800
-+++ b/io-ctrl/Makefile	2019-03-27 14:01:52.598442750 +0800
+--- a/Makefile	2019-03-27 11:50:27.879234978 +0800
++++ b/Makefile	2019-03-27 14:01:52.598442750 +0800
 @@ -69,8 +69,8 @@
    LDFLAGS += -L$(OECORE_TARGET_SYSROOT)usr/lib -Wl,-rpath-link,$(OECORE_TARGET_SYSROOT)usr/lib -L$(OECORE_TARGET_SYSROOT)lib -Wl,-rpath-link,$(OECORE_TARGET_SYSROOT)lib
    BIN_POSTFIX =
