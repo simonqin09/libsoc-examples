@@ -1,0 +1,11 @@
+--- a/layers/meta-openembedded/meta-oe/recipes-support/libsoc/libsoc_0.8.2.bb	2019-09-17 11:14:00.603782327 +0800
++++ b/layers/meta-openembedded/meta-oe/recipes-support/libsoc/libsoc_0.8.2.bb	2019-09-16 15:04:37.403541969 +0800
+@@ -7,7 +7,7 @@
+ LICENSE = "LGPLv2.1"
+ LIC_FILES_CHKSUM = "file://LICENCE;md5=e0bfebea12a718922225ba987b2126a5"
+ 
+-inherit autotools pkgconfig python-dir
++inherit autotools pkgconfig python3-dir
+ 
+ SRCREV = "fd1ad6e7823fa76d8db0d3c5884faffa8ffddafb"
+ SRC_URI = "git://github.com/jackmitch/libsoc.git"
