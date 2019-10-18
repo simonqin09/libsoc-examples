@@ -1,0 +1,49 @@
+--- a/layers/meta-toradex-demos/recipes-images/images/angstrom-lxde-image.bb	2019-07-25 16:11:43.790043975 +0800
++++ b/layers/meta-toradex-demos/recipes-images/images/angstrom-qt5-lxde-image.bb	2019-08-15 10:23:15.932229782 +0800
+@@ -5,7 +5,7 @@
+ LICENSE = "MIT"
+ 
+ #start of the resulting deployable tarball name
+-export IMAGE_BASENAME = "LXDE-Image"
++export IMAGE_BASENAME = "Qt5-LXDE-Image"
+ IMAGE_NAME_apalis-imx6 = "Apalis-iMX6_${IMAGE_BASENAME}"
+ IMAGE_NAME_apalis-t30 = "Apalis-T30_${IMAGE_BASENAME}"
+ IMAGE_NAME_apalis-tk1 = "Apalis-TK1_${IMAGE_BASENAME}"
+@@ -25,10 +25,14 @@
+ #create the deployment directory-tree
+ require recipes-images/images/tdx-image-fstype.inc
+ 
+-IMAGE_LINGUAS = "en-us"
++inherit populate_sdk populate_sdk_qt5
++
++IMAGE_LINGUAS = "en-us zh-cn"
+ #IMAGE_LINGUAS = "de-de fr-fr en-gb en-us pt-br es-es kn-in ml-in ta-in"
+ #ROOTFS_POSTPROCESS_COMMAND += 'install_linguas; '
+ 
++FONT_CHINESE = "ttf-droid-sans ttf-droid-sans-fallback ttf-droid-sans-mono ttf-droid-serif freetype"
++
+ DISTRO_UPDATE_ALTERNATIVES ??= ""
+ ROOTFS_PKGMANAGE_PKGS ?= '${@oe.utils.conditional("ONLINE_PACKAGE_MANAGEMENT", "none", "", "${ROOTFS_PKGMANAGE} ${DISTRO_UPDATE_ALTERNATIVES}", d)}'
+ 
+@@ -246,6 +250,12 @@
+     xserver-xorg-extension-extmod \
+ "
+ 
++IMAGE_INSTALL_QT5 = " \
++    packagegroup-qt5 \
++    liberation-fonts \
++    qt5-x11-free-systemd \
++"
++
+ IMAGE_INSTALL += " \
+     eject \
+     gconf \
+@@ -292,6 +302,8 @@
+     libxcomposite \
+     alsa-states \
+     ${IMAGE_BROWSER} \
++    ${FONT_CHINESE} \
++    ${IMAGE_INSTALL_QT5} \
+ "
+ require recipes-images/images/lx.inc
+ require recipes-images/images/tdx-extra.inc
